@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="onboarding_title_array">
+        <item>@string/onboarding_title_1</item>
+        <item>@string/onboarding_title_2</item>
+        <item>@string/onboarding_title_3</item>
+    </string-array>
+    <string-array name="onboarding_body_array">
+        <item>@string/onboarding_body_1</item>
+        <item>@string/onboarding_body_2</item>
+        <item>@string/onboarding_body_3</item>
+    </string-array>
+</resources>

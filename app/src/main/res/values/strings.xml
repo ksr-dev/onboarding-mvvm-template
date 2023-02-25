@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Template</string>
+    <string name="onboarding_title_1">Page 1</string>
+    <string name="onboarding_title_2">Page 2</string>
+    <string name="onboarding_title_3">Page 3</string>
+
+    <string name="onboarding_body_1">Page 1 Text</string>
+    <string name="onboarding_body_2">Page 2 Text</string>
+    <string name="onboarding_body_3">Page 3 Text</string>
+
 </resources>
