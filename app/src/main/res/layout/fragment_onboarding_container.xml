@@ -8,12 +8,13 @@
     tools:context=".ui.onboarding.OnboardingContainerFragment">
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/message"
+        android:id="@+id/skip_button"
+        style="@style/Text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="36dp"
-        android:text="Skip"
+        android:layout_marginTop="@dimen/size_36"
+        android:layout_marginEnd="@dimen/size_36"
+        android:text="@string/onboarding_skip"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -21,7 +22,8 @@
         android:id="@+id/tablayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:layout_marginBottom="@dimen/size_120"
+        android:background="@color/transparent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,5 +37,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/continue_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/size_24"
+        android:layout_marginStart="@dimen/size_24"
+        android:layout_marginEnd="@dimen/size_24"
+        android:background="@color/white"
+        android:textColor="@color/black"
+        android:text="@string/onboarding_continue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 import com.google.android.material.tabs.TabLayoutMediator
 import ee.ksr.template.R
 import ee.ksr.template.databinding.FragmentOnboardingContainerBinding
@@ -33,10 +35,9 @@ class OnboardingContainerFragment : Fragment() {
         return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(this)[OnboardingViewModel::class.java]
-        // TODO: Use the ViewModel
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -45,11 +46,25 @@ class OnboardingContainerFragment : Fragment() {
     }
 
     private fun initViewPager() {
-        viewPager = binding.viewpager
         pagerAdapter = SlidePagerAdapter(this)
+        viewPager = binding.viewpager
         viewPager.adapter = pagerAdapter
-        val tabLayout = binding.tablayout
-        TabLayoutMediator(tabLayout, viewPager) { _, _ -> }.attach()
+
+        viewPager.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                if (position == NUM_PAGES - 1) {
+                    binding.skipButton.visibility = View.GONE
+                } else {
+                    binding.skipButton.visibility = View.VISIBLE
+                }
+            }
+        })
+
+        TabLayoutMediator(binding.tablayout, viewPager) { _, _ -> }.attach()
+        binding.continueButton.setOnClickListener {
+            showNextPage()
+        }
     }
 
     private inner class SlidePagerAdapter(fragment: OnboardingContainerFragment) :
@@ -62,6 +77,14 @@ class OnboardingContainerFragment : Fragment() {
                 title = pageTitle,
                 body = pageBody
             )
+        }
+    }
+
+    private fun showNextPage() {
+        if (viewPager.currentItem != NUM_PAGES - 1) { // has not reached end
+            viewPager.setCurrentItem(viewPager.currentItem + 1, true)
+        } else { // has reached end
+            //viewModel.onOpenEnterAppPage()
         }
     }
 

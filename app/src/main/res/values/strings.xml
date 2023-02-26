@@ -8,4 +8,7 @@
     <string name="onboarding_body_2">Page 2 Text</string>
     <string name="onboarding_body_3">Page 3 Text</string>
 
+    <string name="onboarding_skip">Skip</string>
+    <string name="onboarding_continue">Continue</string>
+
 </resources>
