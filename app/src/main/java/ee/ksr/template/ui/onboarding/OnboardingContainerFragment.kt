@@ -6,10 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 import com.google.android.material.tabs.TabLayoutMediator
 import ee.ksr.template.R
 import ee.ksr.template.databinding.FragmentOnboardingContainerBinding
@@ -42,10 +41,17 @@ class OnboardingContainerFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initViewPager()
+        initViews()
     }
 
-    private fun initViewPager() {
+    private fun initViews() {
+        binding.skipButton.setOnClickListener {
+            navigateToHomeFragment()
+        }
+        createViewPager()
+    }
+
+    private fun createViewPager() {
         pagerAdapter = SlidePagerAdapter(this)
         viewPager = binding.viewpager
         viewPager.adapter = pagerAdapter
@@ -55,16 +61,23 @@ class OnboardingContainerFragment : Fragment() {
                 super.onPageSelected(position)
                 if (position == NUM_PAGES - 1) {
                     binding.skipButton.visibility = View.GONE
+                    binding.continueButton.setOnClickListener {
+                        navigateToHomeFragment()
+                    }
                 } else {
                     binding.skipButton.visibility = View.VISIBLE
+                    binding.continueButton.setOnClickListener {
+                        showNextPage()
+                    }
                 }
             }
         })
-
         TabLayoutMediator(binding.tablayout, viewPager) { _, _ -> }.attach()
-        binding.continueButton.setOnClickListener {
-            showNextPage()
-        }
+    }
+
+    private fun navigateToHomeFragment() {
+        val action = OnboardingContainerFragmentDirections.actionOnboardingContainerFragmentToHomeFragment()
+        findNavController().navigate(action)
     }
 
     private inner class SlidePagerAdapter(fragment: OnboardingContainerFragment) :
@@ -73,9 +86,13 @@ class OnboardingContainerFragment : Fragment() {
         override fun createFragment(position: Int): Fragment {
             val pageTitle = resources.getStringArray(R.array.onboarding_title_array)[position]
             val pageBody = resources.getStringArray(R.array.onboarding_body_array)[position]
+            val imageArray = resources.obtainTypedArray(R.array.onboarding_image_array)
+            val pageImage = imageArray.getResourceId(position, 0)
+            imageArray.recycle()
             return OnboardingPageFragment.newInstance(
                 title = pageTitle,
-                body = pageBody
+                body = pageBody,
+                imageResource = pageImage
             )
         }
     }

@@ -38,17 +38,21 @@ class OnboardingPageFragment : Fragment() {
             it.getString(ARG_BODY)?.let { body ->
                 binding.body.text = body
             }
+            it.getInt(ARG_IMAGE).let { image ->
+                binding.image.setImageResource(image)
+            }
         }
     }
 
     companion object {
         private const val ARG_TITLE = "ARG_TITLE"
         private const val ARG_BODY = "ARG_BODY"
-
-        fun newInstance(title: String, body: String): OnboardingPageFragment {
+        private const val ARG_IMAGE = "ARG_IMG"
+        fun newInstance(title: String, body: String, imageResource: Int): OnboardingPageFragment {
             val args = Bundle()
             args.putString(ARG_TITLE, title)
             args.putString(ARG_BODY, body)
+            args.putInt(ARG_IMAGE, imageResource)
             val fragment = OnboardingPageFragment()
             fragment.arguments = args
             return fragment

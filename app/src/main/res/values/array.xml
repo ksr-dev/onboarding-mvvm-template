@@ -10,4 +10,9 @@
         <item>@string/onboarding_body_2</item>
         <item>@string/onboarding_body_3</item>
     </string-array>
+    <integer-array name="onboarding_image_array">
+        <item>@drawable/clouds</item>
+        <item>@drawable/tree</item>
+        <item>@drawable/clouds</item>
+    </integer-array>
 </resources>

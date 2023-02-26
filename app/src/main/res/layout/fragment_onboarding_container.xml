@@ -7,14 +7,16 @@
     android:layout_height="match_parent"
     tools:context=".ui.onboarding.OnboardingContainerFragment">
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/skip_button"
         style="@style/Text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/size_36"
-        android:layout_marginEnd="@dimen/size_36"
+        android:layout_marginEnd="@dimen/size_24"
+        android:background="@color/transparent"
         android:text="@string/onboarding_skip"
+        android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -42,12 +44,12 @@
         android:id="@+id/continue_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/size_24"
         android:layout_marginStart="@dimen/size_24"
         android:layout_marginEnd="@dimen/size_24"
-        android:background="@color/white"
-        android:textColor="@color/black"
+        android:layout_marginBottom="@dimen/size_24"
+        android:background="@color/reddish"
         android:text="@string/onboarding_continue"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
