@@ -26,6 +26,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/size_120"
         android:background="@color/transparent"
+        app:tabBackground="@drawable/pager_dot_selector"
+        app:tabIndicatorHeight="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

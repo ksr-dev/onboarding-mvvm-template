@@ -106,6 +106,6 @@ class OnboardingContainerFragment : Fragment() {
     }
 
     companion object {
-        private const val NUM_PAGES = 3
+        private const val NUM_PAGES = 4
     }
 }
