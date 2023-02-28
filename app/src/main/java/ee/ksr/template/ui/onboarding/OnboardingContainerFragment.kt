@@ -72,7 +72,8 @@ class OnboardingContainerFragment : Fragment() {
                 }
             }
         })
-        TabLayoutMediator(binding.tablayout, viewPager) { _, _ -> }.attach()
+
+        binding.dotsIndicator.attachTo(viewPager)
     }
 
     private fun navigateToHomeFragment() {

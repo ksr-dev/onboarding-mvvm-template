@@ -18,4 +18,24 @@
         <item name="android:textAlignment">center</item>
     </style>
 
+    <style name="Button" parent="Widget.AppCompat.Button">
+        <item name="android:fontFamily">Roboto</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">@drawable/background_button</item>
+        <item name="android:paddingStart">@dimen/size_24</item>
+        <item name="android:paddingEnd">@dimen/size_24</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="Dots">
+        <item name="dotsColor">@color/reddish</item>
+        <item name="dotsCornerRadius">@dimen/size_4</item>
+        <item name="dotsSize">@dimen/size_8</item>
+        <item name="dotsSpacing">@dimen/size_8</item>
+        <item name="dotsWidthFactor">1.5</item>
+        <item name="progressMode">true</item>
+        <item name="selectedDotColor">@color/greenish</item>
+    </style>
+
+
 </resources>
