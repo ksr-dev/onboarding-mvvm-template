@@ -2,9 +2,11 @@ package ee.ksr.template
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import dagger.hilt.android.AndroidEntryPoint
 import ee.ksr.template.databinding.ActivityMainBinding
 import ee.ksr.template.ui.onboarding.OnboardingContainerFragment
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding

@@ -1,8 +1,9 @@
 package ee.ksr.template.ui.onboarding
 
 import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class OnboardingViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
-
+@HiltViewModel
+class OnboardingViewModel @Inject constructor() : ViewModel() {
 }

@@ -6,13 +6,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
+import dagger.hilt.android.AndroidEntryPoint
 import ee.ksr.template.R
 import ee.ksr.template.databinding.FragmentOnboardingContainerBinding
 
+@AndroidEntryPoint
 class OnboardingContainerFragment : Fragment() {
 
     private var _binding: FragmentOnboardingContainerBinding? = null
@@ -24,7 +27,7 @@ class OnboardingContainerFragment : Fragment() {
     private lateinit var viewPager: ViewPager2
     private lateinit var pagerAdapter: SlidePagerAdapter
 
-    private lateinit var viewModel: OnboardingViewModel
+    private val viewModel: OnboardingViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,11 +35,6 @@ class OnboardingContainerFragment : Fragment() {
     ): View {
         _binding = FragmentOnboardingContainerBinding.inflate(inflater, container, false)
         return binding.root
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(this)[OnboardingViewModel::class.java]
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
