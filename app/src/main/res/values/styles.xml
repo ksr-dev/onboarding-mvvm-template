@@ -37,5 +37,9 @@
         <item name="selectedDotColor">@color/greenish</item>
     </style>
 
+    <style name="Overlay">
+        <item name="android:scaleType">fitXY</item>
+        <item name="android:tint">@color/reddish</item>
+    </style>
 
 </resources>

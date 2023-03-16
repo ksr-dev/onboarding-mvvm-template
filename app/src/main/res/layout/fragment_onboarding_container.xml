@@ -7,12 +7,22 @@
     android:layout_height="match_parent"
     tools:context=".ui.onboarding.OnboardingContainerFragment">
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/overlay_image"
+        style="@style/Overlay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_neg_200"
+        android:src="@drawable/overlay"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/skip_button"
         style="@style/Text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/size_24"
+        android:layout_marginTop="@dimen/size_12"
         android:layout_marginEnd="@dimen/size_12"
         android:background="@color/transparent"
         android:text="@string/onboarding_skip"

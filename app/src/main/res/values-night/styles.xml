@@ -27,4 +27,9 @@
         <item name="selectedDotColor">@color/reddish</item>
     </style>
 
+    <style name="Overlay">
+        <item name="android:tint">@color/greenish</item>
+    </style>
+
+
 </resources>
