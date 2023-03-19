@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/dark_gray"
     tools:context=".ui.onboarding.OnboardingContainerFragment">
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -12,8 +13,19 @@
         style="@style/Overlay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/size_neg_200"
+        android:layout_marginTop="@dimen/size_neg_120"
         android:src="@drawable/overlay"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/title_text"
+        style="@style/Text.Title.Large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_48"
+        android:text="@string/woo_title"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -22,21 +34,22 @@
         style="@style/Text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/size_12"
-        android:layout_marginEnd="@dimen/size_12"
+        android:layout_marginBottom="@dimen/size_24"
         android:background="@color/transparent"
         android:text="@string/onboarding_skip"
         android:textAllCaps="false"
+        android:textColor="@color/reddish"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
         android:id="@+id/dots_indicator"
         style="@style/Dots"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/size_120"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="@dimen/size_24"
+        app:layout_constraintBottom_toTopOf="@id/continue_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -53,13 +66,13 @@
         android:id="@+id/continue_button"
         style="@style/Button"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/size_64"
+        android:layout_height="@dimen/size_48"
         android:layout_marginStart="@dimen/size_24"
         android:layout_marginEnd="@dimen/size_24"
-        android:layout_marginBottom="@dimen/size_24"
+        android:layout_marginBottom="@dimen/size_8"
         android:text="@string/onboarding_continue"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/skip_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
