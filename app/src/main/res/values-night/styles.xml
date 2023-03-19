@@ -18,7 +18,7 @@
     </style>
 
     <style name="Dots">
-        <item name="dotsColor">@color/greenish</item>
+        <item name="dotsColor">@color/dark_grayish</item>
         <item name="dotsCornerRadius">@dimen/size_4</item>
         <item name="dotsSize">@dimen/size_8</item>
         <item name="dotsSpacing">@dimen/size_8</item>
