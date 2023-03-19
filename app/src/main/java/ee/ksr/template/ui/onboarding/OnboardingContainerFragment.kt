@@ -57,12 +57,10 @@ class OnboardingContainerFragment : Fragment() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 if (position == NUM_PAGES - 1) {
-                    binding.skipButton.visibility = View.GONE
                     binding.continueButton.setOnClickListener {
                         navigateToHomeFragment()
                     }
                 } else {
-                    binding.skipButton.visibility = View.VISIBLE
                     binding.continueButton.setOnClickListener {
                         showNextPage()
                     }
@@ -104,6 +102,6 @@ class OnboardingContainerFragment : Fragment() {
     }
 
     companion object {
-        private const val NUM_PAGES = 4
+        private const val NUM_PAGES = 3
     }
 }

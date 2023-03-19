@@ -11,7 +11,7 @@
         <item name="android:fontFamily">Roboto</item>
         <item name="android:textStyle">bold</item>
         <item name="android:background">@drawable/background_button</item>
-        <item name="android:backgroundTint">@color/greenish</item>
+        <item name="android:backgroundTint">@color/reddish</item>
         <item name="android:paddingStart">@dimen/size_24</item>
         <item name="android:paddingEnd">@dimen/size_24</item>
         <item name="android:textColor">@color/black</item>
@@ -28,7 +28,7 @@
     </style>
 
     <style name="Overlay">
-        <item name="android:tint">@color/greenish</item>
+        <item name="android:tint">@color/black</item>
     </style>
 
 
