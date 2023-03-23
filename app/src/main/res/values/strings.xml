@@ -1,17 +1,18 @@
 <resources>
     <string name="app_name">Template</string>
-    <string name="onboarding_title_1">Welcome to the onboarding template app!</string>
-    <string name="onboarding_title_2">You can also swipe backwards and forwards!</string>
-    <string name="onboarding_title_3">Don\'t forget to add images!</string>
+    <string name="onboarding_title_1">Le reseau social, vraiment social.</string>
+    <string name="onboarding_title_2">Sur l\'app Entourage:</string>
+    <string name="onboarding_title_3">Entourage avec vous !</string>
     <string name="onboarding_title_4">You can also change the amount of pages!</string>
 
-    <string name="onboarding_body_1">Here you can write a lot of lorem ipsum and whatever else you want to introduce the application to the user.</string>
-    <string name="onboarding_body_2">Here you can write EVEN MORE lorem ipsum and whatever else you want to introduce the application to the user (also check out the skip button).</string>
-    <string name="onboarding_body_3">Here you can write EXCEEDING AMOUNTS of lorem ipsum and whatever else you want to introduce the application to the user.</string>
+    <string name="onboarding_body_1">Notre mission : mobiliser et outiller les citoyens pour entourer les plus exclus.</string>
+    <string name="onboarding_body_2">Rencontrez les voisins qui vous ressemblent lors d\'evenements et echangez aoutour d\'actions de solidarite.</string>
+    <string name="onboarding_body_3">Les equipes d\'ambassadeurs, de benevoles et de moderateurs d\'Entourage vous accompagnent et vous orientent au quotidien.</string>
     <string name="onboarding_body_4">Here you can write ALL OF THE of lorem ipsum and whatever else you want to introduce the application to the user.</string>
 
-    <string name="onboarding_skip">Skip</string>
-    <string name="onboarding_continue">Continue</string>
+    <string name="onboarding_skip">Passer</string>
+    <string name="onboarding_continue">Suivant</string>
+    <string name="onboarding_back">Precedent</string>
     <string name="home_title">And we\'re done!</string>
     <string name="home_body">Feel free to use the source code of this application wherever you see fit.</string>
 
