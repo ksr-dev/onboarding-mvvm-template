@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-
-    <style name="Text.Body">
-        <item name="android:textSize">@dimen/text_16</item>
-        <item name="android:textAlignment">textStart</item>
-        <item name="android:lineHeight">@dimen/text_24</item>
-    </style>
-</resources>

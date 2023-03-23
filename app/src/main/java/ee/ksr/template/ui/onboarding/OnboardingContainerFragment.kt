@@ -19,7 +19,6 @@ import ee.ksr.template.databinding.FragmentOnboardingContainerBinding
 class OnboardingContainerFragment : Fragment() {
 
     private var _binding: FragmentOnboardingContainerBinding? = null
-
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -53,8 +52,8 @@ class OnboardingContainerFragment : Fragment() {
         pagerAdapter = SlidePagerAdapter(this)
         viewPager = binding.viewpager
         viewPager.adapter = pagerAdapter
-        viewPager.isUserInputEnabled = false
-        viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+
+        viewPager.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 if (position == NUM_PAGES - 1) {
@@ -68,16 +67,6 @@ class OnboardingContainerFragment : Fragment() {
                         showNextPage()
                     }
                 }
-
-                if (position != 0) {
-                    binding.backButton.visibility = View.VISIBLE
-                    binding.backButton.setOnClickListener {
-                        showPreviousPage()
-                    }
-                } else {
-                    binding.backButton.visibility = View.GONE
-
-                }
             }
         })
 
@@ -85,8 +74,7 @@ class OnboardingContainerFragment : Fragment() {
     }
 
     private fun navigateToHomeFragment() {
-        val action =
-            OnboardingContainerFragmentDirections.actionOnboardingContainerFragmentToHomeFragment()
+        val action = OnboardingContainerFragmentDirections.actionOnboardingContainerFragmentToHomeFragment()
         findNavController().navigate(action)
     }
 
@@ -115,16 +103,7 @@ class OnboardingContainerFragment : Fragment() {
         }
     }
 
-    private fun showPreviousPage() {
-        if (viewPager.currentItem != 0) { // has not reached end
-            viewPager.setCurrentItem(viewPager.currentItem - 1, true)
-        } else { // has reached end
-            //viewModel.onOpenEnterAppPage()
-        }
-    }
-
-
     companion object {
-        private const val NUM_PAGES = 3
+        private const val NUM_PAGES = 4
     }
 }
