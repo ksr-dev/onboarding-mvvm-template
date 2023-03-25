@@ -1,17 +1,18 @@
 <resources>
     <string name="app_name">Template</string>
-    <string name="onboarding_title_1">Welcome to the onboarding template app!</string>
+    <string name="onboarding_title_1">Thousands of Currencies</string>
     <string name="onboarding_title_2">You can also swipe backwards and forwards!</string>
     <string name="onboarding_title_3">Don\'t forget to add images!</string>
     <string name="onboarding_title_4">You can also change the amount of pages!</string>
 
-    <string name="onboarding_body_1">Here you can write a lot of lorem ipsum and whatever else you want to introduce the application to the user.</string>
+    <string name="onboarding_body_1">A hardware wallet for your Bitcoin, Etherum, and many more currencies simultaneously - all in one card</string>
     <string name="onboarding_body_2">Here you can write EVEN MORE lorem ipsum and whatever else you want to introduce the application to the user (also check out the skip button).</string>
     <string name="onboarding_body_3">Here you can write EXCEEDING AMOUNTS of lorem ipsum and whatever else you want to introduce the application to the user.</string>
     <string name="onboarding_body_4">Here you can write ALL OF THE of lorem ipsum and whatever else you want to introduce the application to the user.</string>
 
     <string name="onboarding_skip">Skip</string>
-    <string name="onboarding_continue">Continue</string>
+    <string name="onboarding_continue">Order</string>
+    <string name="onboarding_back">Scan Card</string>
     <string name="home_title">And we\'re done!</string>
     <string name="home_body">Feel free to use the source code of this application wherever you see fit.</string>
 
