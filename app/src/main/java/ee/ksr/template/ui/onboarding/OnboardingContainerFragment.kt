@@ -19,6 +19,7 @@ import ee.ksr.template.databinding.FragmentOnboardingContainerBinding
 class OnboardingContainerFragment : Fragment() {
 
     private var _binding: FragmentOnboardingContainerBinding? = null
+
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -52,29 +53,25 @@ class OnboardingContainerFragment : Fragment() {
         pagerAdapter = SlidePagerAdapter(this)
         viewPager = binding.viewpager
         viewPager.adapter = pagerAdapter
-
-        viewPager.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
+        viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
-                if (position == NUM_PAGES - 1) {
-                    binding.skipButton.visibility = View.GONE
-                    binding.continueButton.setOnClickListener {
-                        navigateToHomeFragment()
-                    }
-                } else {
-                    binding.skipButton.visibility = View.VISIBLE
-                    binding.continueButton.setOnClickListener {
-                        showNextPage()
-                    }
+                binding.continueButton.setOnClickListener {
+                    navigateToHomeFragment()
+                }
+
+                binding.backButton.setOnClickListener {
+                    navigateToHomeFragment()
                 }
             }
         })
 
-        binding.dotsIndicator.attachTo(viewPager)
+        //binding.dotsIndicator.attachTo(viewPager)
     }
 
     private fun navigateToHomeFragment() {
-        val action = OnboardingContainerFragmentDirections.actionOnboardingContainerFragmentToHomeFragment()
+        val action =
+            OnboardingContainerFragmentDirections.actionOnboardingContainerFragmentToHomeFragment()
         findNavController().navigate(action)
     }
 
@@ -103,7 +100,11 @@ class OnboardingContainerFragment : Fragment() {
         }
     }
 
+    private fun showFirstPage() {
+        viewPager.setCurrentItem(0, true)
+    }
+
     companion object {
-        private const val NUM_PAGES = 4
+        private const val NUM_PAGES = 6
     }
 }

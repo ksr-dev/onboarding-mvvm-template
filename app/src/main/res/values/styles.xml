@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="Text">
-        <item name="android:textSize">@dimen/text_16</item>
+        <item name="android:textSize">@dimen/text_24</item>
         <item name="android:fontFamily">Roboto</item>
         <item name="android:textColor">@color/black</item>
     </style>
 
     <style name="Text.Title">
-        <item name="android:textSize">@dimen/text_24</item>
+        <item name="android:textSize">@dimen/text_36</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textAlignment">center</item>
 
