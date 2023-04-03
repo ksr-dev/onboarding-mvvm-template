@@ -5,8 +5,14 @@
     <color name="grayish">#BFBFBF</color>
     <color name="dark_grayish">#5A5A5A</color>
     <color name="dark_gray">#2C2C2C</color>
+    <color name="yellow">#FFF200</color>
 
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="transparent">#00FFFFFF</color>
+    <color name="green">#07E900</color>
+    <color name="blue">#006EF3</color>
+    <color name="purple">#6200FF</color>
+    <color name="orange">#FF5900</color>
+    <color name="maroon">#006674</color>
 </resources>

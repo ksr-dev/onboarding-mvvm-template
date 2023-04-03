@@ -5,6 +5,7 @@
         <item>@string/onboarding_title_2</item>
         <item>@string/onboarding_title_3</item>
         <item>@string/onboarding_title_4</item>
+        <item>@string/onboarding_title_5</item>
     </string-array>
 
     <string-array name="onboarding_body_array">
@@ -12,13 +13,15 @@
         <item>@string/onboarding_body_2</item>
         <item>@string/onboarding_body_3</item>
         <item>@string/onboarding_body_4</item>
+        <item>@string/onboarding_body_4</item>
     </string-array>
 
-    <integer-array name="onboarding_image_array">
-        <item>@drawable/clouds</item>
-        <item>@drawable/tree</item>
-        <item>@drawable/cactus</item>
-        <item>@drawable/cow</item>
+    <integer-array name="onboarding_color_array">
+        <item>@color/green</item>
+        <item>@color/blue</item>
+        <item>@color/purple</item>
+        <item>@color/orange</item>
+        <item>@color/maroon</item>
     </integer-array>
 </resources>
 

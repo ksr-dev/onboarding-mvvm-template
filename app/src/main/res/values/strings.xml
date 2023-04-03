@@ -1,9 +1,10 @@
 <resources>
-    <string name="app_name">Template</string>
-    <string name="onboarding_title_1">Welcome to the onboarding template app!</string>
-    <string name="onboarding_title_2">You can also swipe backwards and forwards!</string>
-    <string name="onboarding_title_3">Don\'t forget to add images!</string>
-    <string name="onboarding_title_4">You can also change the amount of pages!</string>
+    <string name="app_name">Repeatcard</string>
+    <string name="onboarding_title_1">Create a directory to add flashcards. No worries, you already have a default directory.</string>
+    <string name="onboarding_title_2">In a directory, create your flashcards.</string>
+    <string name="onboarding_title_3">Review flashcards of a specific directory.</string>
+    <string name="onboarding_title_4">Do you feel prepared? Take a quiz, and see the results.</string>
+    <string name="onboarding_title_5">See the logs screen to track your activity.</string>
 
     <string name="onboarding_body_1">Here you can write a lot of lorem ipsum and whatever else you want to introduce the application to the user.</string>
     <string name="onboarding_body_2">Here you can write EVEN MORE lorem ipsum and whatever else you want to introduce the application to the user (also check out the skip button).</string>
@@ -11,9 +12,9 @@
     <string name="onboarding_body_4">Here you can write ALL OF THE of lorem ipsum and whatever else you want to introduce the application to the user.</string>
 
     <string name="onboarding_skip">Skip</string>
-    <string name="onboarding_continue">Continue</string>
+    <string name="onboarding_continue">Next</string>
     <string name="home_title">And we\'re done!</string>
     <string name="home_body">Feel free to use the source code of this application wherever you see fit.</string>
-    <string name="onboarding_back">Back</string>
+    <string name="onboarding_back">Previous</string>
 
 </resources>

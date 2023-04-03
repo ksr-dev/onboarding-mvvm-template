@@ -24,7 +24,7 @@
         <argument
             android:name="hasSkipButton"
             app:argType="boolean"
-            android:defaultValue="true" />
+            android:defaultValue="false" />
         <argument
             android:name="hasContinueButton"
             app:argType="boolean"

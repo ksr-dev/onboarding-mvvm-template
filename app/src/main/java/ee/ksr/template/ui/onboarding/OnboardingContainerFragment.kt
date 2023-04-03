@@ -50,6 +50,7 @@ class OnboardingContainerFragment : Fragment() {
             binding.continueButton.visibility = View.GONE
         }
         if (hasSkipButton) {
+            binding.skipButton.visibility = View.VISIBLE
             binding.skipButton.setOnClickListener {
                 navigateToHomeFragment()
             }
@@ -132,14 +133,12 @@ class OnboardingContainerFragment : Fragment() {
         override fun getItemCount(): Int = NUM_PAGES
         override fun createFragment(position: Int): Fragment {
             val pageTitle = resources.getStringArray(R.array.onboarding_title_array)[position]
-            val pageBody = resources.getStringArray(R.array.onboarding_body_array)[position]
-            val imageArray = resources.obtainTypedArray(R.array.onboarding_image_array)
-            val pageImage = imageArray.getResourceId(position, 0)
-            imageArray.recycle()
+            val colorArray = resources.obtainTypedArray(R.array.onboarding_color_array)
+            val colorId = colorArray.getResourceId(position, 0)
+            colorArray.recycle()
             return OnboardingPageFragment.newInstance(
                 title = pageTitle,
-                body = pageBody,
-                imageResource = pageImage
+                pageColor = colorId
             )
         }
     }
@@ -153,6 +152,6 @@ class OnboardingContainerFragment : Fragment() {
     }
 
     companion object {
-        private const val NUM_PAGES = 4
+        private const val NUM_PAGES = 5
     }
 }
