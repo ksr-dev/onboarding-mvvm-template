@@ -14,5 +14,6 @@
     <string name="onboarding_continue">Continue</string>
     <string name="home_title">And we\'re done!</string>
     <string name="home_body">Feel free to use the source code of this application wherever you see fit.</string>
+    <string name="onboarding_back">Back</string>
 
 </resources>

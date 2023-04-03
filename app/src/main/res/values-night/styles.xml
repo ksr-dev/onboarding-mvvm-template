@@ -11,10 +11,15 @@
         <item name="android:fontFamily">Roboto</item>
         <item name="android:textStyle">bold</item>
         <item name="android:background">@drawable/background_button</item>
-        <item name="android:backgroundTint">@color/greenish</item>
+        <item name="android:backgroundTint">@color/dark_gray</item>
         <item name="android:paddingStart">@dimen/size_24</item>
         <item name="android:paddingEnd">@dimen/size_24</item>
         <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="Button.Navigation" parent="Button">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/text_13</item>
     </style>
 
     <style name="Dots">
@@ -24,11 +29,11 @@
         <item name="dotsSpacing">@dimen/size_8</item>
         <item name="dotsWidthFactor">1.5</item>
         <item name="progressMode">true</item>
-        <item name="selectedDotColor">@color/reddish</item>
+        <item name="selectedDotColor">@color/white</item>
     </style>
 
     <style name="Overlay">
-        <item name="android:tint">@color/greenish</item>
+        <item name="android:tint">@color/dark_gray</item>
     </style>
 
 

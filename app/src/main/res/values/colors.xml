@@ -4,6 +4,7 @@
     <color name="greenish">#66E7C8</color>
     <color name="grayish">#BFBFBF</color>
     <color name="dark_grayish">#5A5A5A</color>
+    <color name="dark_gray">#2C2C2C</color>
 
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>

@@ -1,6 +1,5 @@
 package ee.ksr.template.ui.onboarding
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,9 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 import ee.ksr.template.R
 import ee.ksr.template.databinding.FragmentOnboardingContainerBinding
@@ -26,6 +25,7 @@ class OnboardingContainerFragment : Fragment() {
     private lateinit var viewPager: ViewPager2
     private lateinit var pagerAdapter: SlidePagerAdapter
 
+    private val args: OnboardingContainerFragmentArgs by navArgs()
     private val viewModel: OnboardingViewModel by viewModels()
 
     override fun onCreateView(
@@ -42,13 +42,26 @@ class OnboardingContainerFragment : Fragment() {
     }
 
     private fun initViews() {
-        binding.skipButton.setOnClickListener {
-            navigateToHomeFragment()
+        val hasSkipButton = args.hasSkipButton
+        val hasBackButton = args.hasBackButton
+        val hasContinueButton = args.hasContinueButton
+        binding.viewpager.isUserInputEnabled = args.isSwipable
+        if (!hasContinueButton) {
+            binding.continueButton.visibility = View.GONE
         }
-        createViewPager()
+        if (hasSkipButton) {
+            binding.skipButton.setOnClickListener {
+                navigateToHomeFragment()
+            }
+        }
+        createViewPager(hasSkipButton, hasBackButton, hasContinueButton)
     }
 
-    private fun createViewPager() {
+    private fun createViewPager(
+        hasSkipButton: Boolean,
+        hasBackButton: Boolean,
+        hasContinueButton: Boolean
+    ) {
         pagerAdapter = SlidePagerAdapter(this)
         viewPager = binding.viewpager
         viewPager.adapter = pagerAdapter
@@ -56,16 +69,14 @@ class OnboardingContainerFragment : Fragment() {
         viewPager.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
-                if (position == NUM_PAGES - 1) {
-                    binding.skipButton.visibility = View.GONE
-                    binding.continueButton.setOnClickListener {
-                        navigateToHomeFragment()
-                    }
-                } else {
-                    binding.skipButton.visibility = View.VISIBLE
-                    binding.continueButton.setOnClickListener {
-                        showNextPage()
-                    }
+                if (hasSkipButton) {
+                    handleSkipButtonForPosition(position)
+                }
+                if (hasBackButton) {
+                    handleBackButtonForPosition(position)
+                }
+                if (hasContinueButton) {
+                    handleContinueButtonForPosition(position)
                 }
             }
         })
@@ -73,11 +84,49 @@ class OnboardingContainerFragment : Fragment() {
         binding.dotsIndicator.attachTo(viewPager)
     }
 
+    private fun handleContinueButtonForPosition(position: Int) {
+        if (position == NUM_PAGES - 1) {
+            binding.continueButton.setOnClickListener {
+                navigateToHomeFragment()
+            }
+        } else {
+            binding.continueButton.setOnClickListener {
+                showNextPage()
+            }
+        }
+    }
+
+    private fun handleBackButtonForPosition(position: Int) {
+        if (position != 0) {
+            binding.backButton.visibility = View.VISIBLE
+            binding.backButton.setOnClickListener {
+                showPreviousPage()
+            }
+        } else {
+            binding.backButton.visibility = View.GONE
+        }
+    }
+
+    private fun handleSkipButtonForPosition(position: Int) {
+        if (position == NUM_PAGES - 1) {
+            binding.skipButton.visibility = View.GONE
+        } else {
+            binding.skipButton.visibility = View.VISIBLE
+        }
+    }
+
     private fun navigateToHomeFragment() {
         val action = OnboardingContainerFragmentDirections.actionOnboardingContainerFragmentToHomeFragment()
         findNavController().navigate(action)
     }
 
+    private fun showPreviousPage() {
+        if (viewPager.currentItem != 0) { // has not reached end
+            viewPager.setCurrentItem(viewPager.currentItem - 1, true)
+        } else { // has reached end
+            //viewModel.onOpenEnterAppPage()
+        }
+    }
     private inner class SlidePagerAdapter(fragment: OnboardingContainerFragment) :
         FragmentStateAdapter(fragment) {
         override fun getItemCount(): Int = NUM_PAGES
