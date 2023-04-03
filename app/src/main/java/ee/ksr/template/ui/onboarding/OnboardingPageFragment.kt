@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat.ThemeCompat
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import ee.ksr.template.databinding.FragmentOnboardingPageBinding
@@ -33,24 +35,19 @@ class OnboardingPageFragment : Fragment() {
             it.getString(ARG_TITLE)?.let { title ->
                 binding.title.text = title
             }
-            it.getString(ARG_BODY)?.let { body ->
-                binding.body.text = body
-            }
-            it.getInt(ARG_IMAGE).let { image ->
-                binding.image.setImageResource(image)
+            it.getInt(ARG_BG_COLOR).let { resourceId ->
+                binding.root.setBackgroundColor(resources.getColor(resourceId, requireContext().theme))
             }
         }
     }
 
     companion object {
         private const val ARG_TITLE = "ARG_TITLE"
-        private const val ARG_BODY = "ARG_BODY"
-        private const val ARG_IMAGE = "ARG_IMG"
-        fun newInstance(title: String, body: String, imageResource: Int): OnboardingPageFragment {
+        private const val ARG_BG_COLOR = "ARG_BG_COLOR"
+        fun newInstance(title: String, pageColor: Int): OnboardingPageFragment {
             val args = Bundle()
             args.putString(ARG_TITLE, title)
-            args.putString(ARG_BODY, body)
-            args.putInt(ARG_IMAGE, imageResource)
+            args.putInt(ARG_BG_COLOR, pageColor)
             val fragment = OnboardingPageFragment()
             fragment.arguments = args
             return fragment
