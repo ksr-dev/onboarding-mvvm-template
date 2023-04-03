@@ -50,6 +50,7 @@ class OnboardingContainerFragment : Fragment() {
             binding.continueButton.visibility = View.GONE
         }
         if (hasSkipButton) {
+            binding.skipButton.visibility = View.VISIBLE
             binding.skipButton.setOnClickListener {
                 navigateToHomeFragment()
             }
