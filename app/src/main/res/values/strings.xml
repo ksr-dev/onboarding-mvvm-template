@@ -15,5 +15,18 @@
     <string name="home_title">And we\'re done!</string>
     <string name="home_body">Feel free to use the source code of this application wherever you see fit.</string>
     <string name="onboarding_back">Back</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="password_confirm">Confirm</string>
+    <string name="log_in_confirm">Confirm</string>
+    <string name="sign_in_google">Sign in using Google</string>
+    <string name="sign_in">Sign in\n</string>
+    <string name="sign_up">Sign up</string>
+    <string name="user_not_found">User not found</string>
+    <string name="user_error">User error</string>
+    <string name="user_found">User %s found</string>
+    <string name="sign_in_google_null">Result is null</string>
+    <string name="sign_in_google_cancelled">Sign in cancelled</string>
+    <string name="sign_in_google_failed">Google sign in failed</string>
 
 </resources>
