@@ -9,7 +9,6 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -59,6 +58,7 @@ class PreSignInFragment : Fragment() {
                     if (it.loginData != null) {
                         Toast.makeText(requireContext(), it.loginData.userName, Toast.LENGTH_SHORT)
                             .show()
+                        navigateToHome()
                     }
                 }
             }
@@ -99,6 +99,10 @@ class PreSignInFragment : Fragment() {
         }
     }
 
+    private fun navigateToHome() {
+        val action = PreSignInFragmentDirections.actionPreSignInFragmentToHomeFragment()
+        findNavController().navigate(action)
+    }
     private fun startSignInWithGoogle() {
         val signInIntent: Intent = mGoogleSignInClient.signInIntent
         googleSignInResultLauncher.launch(signInIntent)
