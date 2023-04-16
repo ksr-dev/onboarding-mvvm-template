@@ -28,8 +28,14 @@
     </style>
 
     <style name="Button.Navigation" parent="Button">
+        <item name="android:gravity">center</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">@dimen/text_13</item>
+    </style>
+
+    <style name="Button.Google" parent="Button">
+        <item name="android:backgroundTint">@color/white</item>
+        <item name="android:gravity">center</item>
     </style>
 
     <style name="Dots">

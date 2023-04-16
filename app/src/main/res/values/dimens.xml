@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <dimen name="size_neg_10">-10dp</dimen>
     <dimen name="size_neg_200">-200dp</dimen>
 
     <dimen name="text_13">13dp</dimen>

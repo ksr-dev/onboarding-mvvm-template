@@ -6,6 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".ui.onboarding.OnboardingPageFragment">
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_email"
+        app:layout_constraintBottom_toTopOf="@id/input_layout_identifier"
+        app:layout_constraintStart_toStartOf="@id/input_layout_identifier" />
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/input_layout_identifier"
         style="@style/Widget.Material3.TextInputEditText.OutlinedBox"
@@ -24,8 +31,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:autofillHints="emailAddress"
-            android:imeOptions="actionNext"
             android:inputType="text|textEmailAddress"
+            android:imeOptions="actionDone"
             android:lines="1" />
 
     </com.google.android.material.textfield.TextInputLayout>
