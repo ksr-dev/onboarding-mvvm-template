@@ -22,7 +22,10 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class SignInViewModel @Inject constructor(private val googleLoginUseCase: GoogleLoginUseCase, private val loginUseCase: LoginUseCase) :
+class SignInViewModel @Inject constructor(
+    private val googleLoginUseCase: GoogleLoginUseCase,
+    private val loginUseCase: LoginUseCase
+) :
     ViewModel() {
 
     private val _uiState = MutableStateFlow(UiState())
@@ -89,8 +92,9 @@ class SignInViewModel @Inject constructor(private val googleLoginUseCase: Google
                     it.copy(toastMessageResId = R.string.sign_in_google_cancelled)
                 }
             }
+
             else -> {
-                Log.e("ITS HERE", it.toString())
+                Log.e(GOOGLE_ACTIVITY_TAG, "resultData: $it")
             }
         }
     }
@@ -99,12 +103,11 @@ class SignInViewModel @Inject constructor(private val googleLoginUseCase: Google
     private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
         try {
             val account: GoogleSignInAccount = completedTask.getResult(ApiException::class.java)
-            // Signed in successfully, show authenticated UI.
             loginWithGoogleAccount(account.email.toString())
         } catch (e: ApiException) {
             // The ApiException status code indicates the detailed failure reason.
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
-            Log.w("TAG", "signInResult:failed code=" + e.statusCode)
+            Log.w(GOOGLE_ACTIVITY_TAG, "signInResult:failed code=${e.statusCode}")
             _uiState.update {
                 it.copy(toastMessageResId = R.string.sign_in_google_failed)
             }
@@ -115,6 +118,10 @@ class SignInViewModel @Inject constructor(private val googleLoginUseCase: Google
         if (identifier.isNotBlank() && password.isNotBlank()) {
             login(identifier, password)
         }
+    }
+
+    companion object {
+        private const val GOOGLE_ACTIVITY_TAG = "GoogleActivityResultCode"
     }
 }
 

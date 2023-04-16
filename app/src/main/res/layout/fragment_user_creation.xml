@@ -7,6 +7,34 @@
     tools:context=".ui.onboarding.OnboardingPageFragment">
 
     <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/title"
+        style="@style/Text.Title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_36"
+        android:layout_marginStart="@dimen/size_36"
+        android:layout_marginEnd="@dimen/size_36"
+        android:text="@string/user_creation_title"
+        android:textAlignment="textStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/body"
+        style="@style/Text.Body"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/size_36"
+        android:layout_marginTop="@dimen/size_36"
+        android:layout_marginEnd="@dimen/size_36"
+        android:text="@string/user_creation_body"
+        android:textAlignment="textStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
+
+    <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/title_email"
@@ -15,19 +43,20 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/input_layout_identifier"
-        style="@style/Widget.Material3.TextInputEditText.OutlinedBox"
+        style="@style/OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/size_16"
+        android:layout_marginStart="@dimen/size_36"
         android:layout_marginTop="@dimen/size_48"
-        android:layout_marginEnd="@dimen/size_16"
+        android:layout_marginEnd="@dimen/size_36"
         app:errorEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/body">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_text_identifier"
+            style="@style/EditTextStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:autofillHints="emailAddress"

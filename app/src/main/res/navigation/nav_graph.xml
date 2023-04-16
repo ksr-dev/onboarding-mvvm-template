@@ -34,7 +34,8 @@
         android:id="@+id/homeFragment"
         android:name="ee.ksr.template.ui.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home"
+        />
     <fragment
         android:id="@+id/preSignInFragment"
         android:name="ee.ksr.template.ui.signin.PreSignInFragment"

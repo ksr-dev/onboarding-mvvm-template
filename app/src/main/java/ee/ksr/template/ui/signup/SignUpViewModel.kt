@@ -20,7 +20,6 @@ class SignUpViewModel @Inject constructor(private val signUpUseCase: SignUpUseCa
     private val _uiState = MutableStateFlow(UiState())
     val uiState: StateFlow<UiState> = _uiState.asStateFlow()
     private val _userIdentifier = MutableStateFlow<String?>(null)
-    val userIdentifier = _userIdentifier.asStateFlow()
 
     private fun createUser(userName: String, password: String) {
         _uiState.update {
