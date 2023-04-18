@@ -117,7 +117,7 @@ class OnboardingContainerFragment : Fragment() {
     }
 
     private fun navigateToHomeFragment() {
-        val action = OnboardingContainerFragmentDirections.actionOnboardingContainerFragmentToHomeFragment()
+        val action = OnboardingContainerFragmentDirections.actionOnboardingContainerFragmentToPreSignInFragment()
         findNavController().navigate(action)
     }
 

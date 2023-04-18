@@ -28,6 +28,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+        debug {
+            applicationIdSuffix ".debug"
+            debuggable true
+        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -70,6 +74,9 @@ dependencies {
     // Dependency injection
     implementation "com.google.dagger:hilt-android:2.44"
     kapt "com.google.dagger:hilt-compiler:2.44"
+
+    // Google Sign-in
+    implementation 'com.google.android.gms:play-services-auth:20.5.0'
 
     //General test dependencies
     testImplementation 'junit:junit:4.13.2'

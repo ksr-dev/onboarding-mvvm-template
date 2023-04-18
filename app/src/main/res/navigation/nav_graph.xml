@@ -10,9 +10,6 @@
         android:name="ee.ksr.template.ui.onboarding.OnboardingContainerFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_onboarding_container" >
-        <action
-            android:id="@+id/action_onboardingContainerFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
         <argument
             android:name="isSwipable"
             app:argType="boolean"
@@ -29,10 +26,68 @@
             android:name="hasContinueButton"
             app:argType="boolean"
             android:defaultValue="true" />
+        <action
+            android:id="@+id/action_onboardingContainerFragment_to_preSignInFragment"
+            app:destination="@id/preSignInFragment" />
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
         android:name="ee.ksr.template.ui.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home"
+        />
+    <fragment
+        android:id="@+id/preSignInFragment"
+        android:name="ee.ksr.template.ui.signin.PreSignInFragment"
+        android:label="PreSignInFragment" >
+        <argument
+            android:name="hasGoogleSignIn"
+            app:argType="boolean"
+            android:defaultValue="true" />
+        <argument
+            android:name="hasSignIn"
+            app:argType="boolean"
+            android:defaultValue="true" />
+        <argument
+            android:name="hasSignUp"
+            app:argType="boolean"
+            android:defaultValue="true" />
+        <action
+            android:id="@+id/action_preSignInFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_preSignInFragment_to_signInFragment"
+            app:destination="@id/signInFragment" />
+        <action
+            android:id="@+id/action_preSignInFragment_to_userCreationFragment"
+            app:destination="@id/userCreationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="ee.ksr.template.ui.signin.SignInFragment"
+        android:label="SignInFragment" >
+        <action
+            android:id="@+id/action_signInFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userCreationFragment"
+        android:name="ee.ksr.template.ui.signup.UserCreationFragment"
+        android:label="UserCreationFragment" >
+        <argument
+            android:name="isEmail"
+            app:argType="boolean"
+            android:defaultValue="true" />
+        <action
+            android:id="@+id/action_userCreationFragment_to_passwordFragment"
+            app:destination="@id/passwordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/passwordFragment"
+        android:name="ee.ksr.template.ui.signup.PasswordFragment"
+        android:label="PasswordFragment" >
+        <action
+            android:id="@+id/action_passwordFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>
