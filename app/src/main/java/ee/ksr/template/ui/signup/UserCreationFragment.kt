@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import dagger.hilt.android.AndroidEntryPoint
+import ee.ksr.template.R
 import ee.ksr.template.databinding.FragmentUserCreationBinding
 
 @AndroidEntryPoint
@@ -35,12 +36,11 @@ class UserCreationFragment : Fragment() {
     }
 
     private fun initViews() {
-        val isEmail = args.isEmail
-        if (isEmail) {
-
+        if (args.isEmail) {
+            binding.identifierTitle.text = getString(R.string.title_email)
         }
         else {
-
+            binding.identifierTitle.text = getString(R.string.title_username)
         }
         binding.continueButton.setOnClickListener {
             val userIdentifier = binding.editTextIdentifier.text.toString().trim()

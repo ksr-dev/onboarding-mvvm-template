@@ -15,7 +15,6 @@
     <string name="home_title">And we\'re done!</string>
     <string name="home_body">Feel free to use the source code of this application wherever you see fit.</string>
     <string name="onboarding_back">Back</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="password_confirm">Confirm</string>
     <string name="log_in_confirm">Confirm</string>
@@ -40,5 +39,6 @@
     <string name="user_creation_body">You can change whether the user is prompted for an email or an username via navigation graph parameters.</string>
     <string name="password_creation_title">Enter a password</string>
     <string name="password_creation_body">You can change whether a password confirmation is needed via navigation graph parameters.</string>
+    <string name="title_username">Username</string>
 
 </resources>
