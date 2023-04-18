@@ -44,6 +44,14 @@
             android:name="hasGoogleSignIn"
             app:argType="boolean"
             android:defaultValue="true" />
+        <argument
+            android:name="hasSignIn"
+            app:argType="boolean"
+            android:defaultValue="true" />
+        <argument
+            android:name="hasSignUp"
+            app:argType="boolean"
+            android:defaultValue="true" />
         <action
             android:id="@+id/action_preSignInFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
@@ -78,10 +86,6 @@
         android:id="@+id/passwordFragment"
         android:name="ee.ksr.template.ui.signup.PasswordFragment"
         android:label="PasswordFragment" >
-        <argument
-            android:name="needsConfirm"
-            app:argType="boolean"
-            android:defaultValue="true" />
         <action
             android:id="@+id/action_passwordFragment_to_homeFragment"
             app:destination="@id/homeFragment" />

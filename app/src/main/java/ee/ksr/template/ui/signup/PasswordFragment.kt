@@ -22,7 +22,6 @@ class PasswordFragment : Fragment() {
 
     private var _binding: FragmentPasswordBinding? = null
     private val binding get() = _binding!!
-    private val args: PasswordFragmentArgs by navArgs()
     private val viewModel: SignUpViewModel by activityViewModels()
 
     override fun onCreateView(
@@ -67,13 +66,6 @@ class PasswordFragment : Fragment() {
     }
 
     private fun initViews() {
-        val needsPasswordConfirmation = args.needsConfirm
-        if (needsPasswordConfirmation) {
-
-        }
-        else {
-
-        }
         binding.continueButton.setOnClickListener {
             val firstPassword = binding.editTextPassword.text.toString().trim()
             val secondPassword = binding.editTextPasswordConfirm.text.toString().trim()

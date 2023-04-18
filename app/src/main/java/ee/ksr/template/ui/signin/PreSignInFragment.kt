@@ -80,22 +80,29 @@ class PreSignInFragment : Fragment() {
     }
 
     private fun initViews() {
-        val hasGoogleSignIn = args.hasGoogleSignIn
-        if (hasGoogleSignIn) {
+        if (args.hasGoogleSignIn) {
             binding.signInGoogleButton.setOnClickListener {
                 startSignInWithGoogle()
             }
         } else {
             binding.signInGoogleButton.visibility = View.GONE
         }
-
-        binding.signInButton.setOnClickListener {
-            val action = PreSignInFragmentDirections.actionPreSignInFragmentToSignInFragment()
-            findNavController().navigate(action)
+        if (args.hasSignIn) {
+            binding.signInButton.setOnClickListener {
+                val action = PreSignInFragmentDirections.actionPreSignInFragmentToSignInFragment()
+                findNavController().navigate(action)
+            }
+        } else {
+            binding.signInButton.visibility = View.GONE
         }
-        binding.signUpButton.setOnClickListener {
-            val action = PreSignInFragmentDirections.actionPreSignInFragmentToUserCreationFragment()
-            findNavController().navigate(action)
+        if (args.hasSignUp) {
+            binding.signUpButton.setOnClickListener {
+                val action =
+                    PreSignInFragmentDirections.actionPreSignInFragmentToUserCreationFragment()
+                findNavController().navigate(action)
+            }
+        } else {
+            binding.signUpButton.visibility = View.GONE
         }
     }
 
@@ -103,6 +110,7 @@ class PreSignInFragment : Fragment() {
         val action = PreSignInFragmentDirections.actionPreSignInFragmentToHomeFragment()
         findNavController().navigate(action)
     }
+
     private fun startSignInWithGoogle() {
         val signInIntent: Intent = mGoogleSignInClient.signInIntent
         googleSignInResultLauncher.launch(signInIntent)
