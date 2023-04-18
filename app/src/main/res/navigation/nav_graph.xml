@@ -47,11 +47,11 @@
         <argument
             android:name="hasSignIn"
             app:argType="boolean"
-            android:defaultValue="true" />
+            android:defaultValue="false" />
         <argument
             android:name="hasSignUp"
             app:argType="boolean"
-            android:defaultValue="true" />
+            android:defaultValue="false" />
         <action
             android:id="@+id/action_preSignInFragment_to_homeFragment"
             app:destination="@id/homeFragment" />

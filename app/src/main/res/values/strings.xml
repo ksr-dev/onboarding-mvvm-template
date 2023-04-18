@@ -40,5 +40,9 @@
     <string name="password_creation_title">Enter a password</string>
     <string name="password_creation_body">You can change whether a password confirmation is needed via navigation graph parameters.</string>
     <string name="title_username">Username</string>
+    <string name="quick_login">Quick login</string>
+    <string name="welcome_posture">Posture Reminder</string>
+    <string name="problems">Problems with login?</string>
+    <string name="cont_anonymously">Continue anonymously</string>
 
 </resources>
