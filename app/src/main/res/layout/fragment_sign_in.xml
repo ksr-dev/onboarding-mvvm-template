@@ -4,7 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/proton_gray_purp"
     tools:context=".ui.onboarding.OnboardingPageFragment">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/image"
+        android:layout_width="@dimen/size_120"
+        android:layout_height="@dimen/size_120"
+        android:layout_marginTop="@dimen/size_48"
+        android:src="@mipmap/ic_launcher_round"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/title"
@@ -15,10 +26,9 @@
         android:layout_marginTop="@dimen/size_36"
         android:layout_marginEnd="@dimen/size_36"
         android:text="@string/sign_in_title"
-        android:textAlignment="textStart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/image" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/body"
@@ -26,10 +36,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/size_36"
-        android:layout_marginTop="@dimen/size_36"
+        android:layout_marginTop="@dimen/size_12"
         android:layout_marginEnd="@dimen/size_36"
         android:text="@string/sign_in_body"
-        android:textAlignment="textStart"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title" />
@@ -85,7 +95,8 @@
         app:errorEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/input_layout_identifier">
+        app:layout_constraintTop_toBottomOf="@id/input_layout_identifier"
+        app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_text_password"
@@ -95,7 +106,8 @@
             android:autofillHints="emailAddress"
             android:imeOptions="actionDone"
             android:inputType="textPassword"
-            android:lines="1" />
+            android:lines="1"
+            app:endIconMode="password_toggle" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -108,9 +120,24 @@
         android:layout_marginEnd="@dimen/size_24"
         android:layout_marginBottom="@dimen/size_24"
         android:text="@string/log_in_confirm"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/input_layout_password" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/sign_in_button"
+        style="@style/Button.Navigation.Transparent"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_50"
+        android:layout_marginStart="@dimen/size_24"
+        android:layout_marginEnd="@dimen/size_24"
+        android:layout_marginBottom="@dimen/size_24"
+        android:backgroundTint="@color/transparent"
+        android:text="@string/need_help"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/continue_button" />
 
     <com.google.android.material.progressindicator.CircularProgressIndicator
         android:id="@+id/progress_indicator"
