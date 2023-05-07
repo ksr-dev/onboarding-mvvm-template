@@ -7,9 +7,12 @@ Clone this repository and import into **Android Studio**
 ```bash
 git clone git@github.com:ksr-dev/onboarding-mvvm-template.git
 ```
+## Main Dependencies
+* Dependency injection - [Hilt](https://dagger.dev/hilt/)
+* Onboarding dots - [dotsindicator By tommybuonomo](https://github.com/tommybuonomo/dotsindicator)
 
 ## Build variants
-Use the Android Studio *Build Variants* button to choose between **production** and **staging** flavors combined with debug and release build types
+The project currently only includes 'debug' and 'release' build types
 
 
 ## Maintainers
