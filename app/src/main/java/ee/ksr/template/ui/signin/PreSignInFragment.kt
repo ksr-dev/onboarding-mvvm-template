@@ -27,7 +27,7 @@ class PreSignInFragment : Fragment() {
     private var _binding: FragmentPreSignInBinding? = null
     private val binding get() = _binding!!
     private val args: PreSignInFragmentArgs by navArgs()
-    private lateinit var mGoogleSignInClient: GoogleSignInClient
+    private lateinit var googleSignInClient: GoogleSignInClient
     private var googleSignInResultLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             viewModel.handleGoogleSignInResult(it)
@@ -37,12 +37,7 @@ class PreSignInFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestEmail()
-            .build()
-        mGoogleSignInClient = GoogleSignIn.getClient(requireActivity(), gso);
-
+        googleSignInClient = GoogleSignIn.getClient(requireActivity(), viewModel.buildGoogleSignInClient())
         lifecycleScope.launch {
             lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.uiState.collect {
@@ -69,7 +64,6 @@ class PreSignInFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
         _binding = FragmentPreSignInBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -112,7 +106,7 @@ class PreSignInFragment : Fragment() {
     }
 
     private fun startSignInWithGoogle() {
-        val signInIntent: Intent = mGoogleSignInClient.signInIntent
+        val signInIntent: Intent = googleSignInClient.signInIntent
         googleSignInResultLauncher.launch(signInIntent)
     }
 }

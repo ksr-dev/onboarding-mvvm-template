@@ -26,7 +26,6 @@ class SignInFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
         _binding = FragmentSignInBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -65,12 +64,13 @@ class SignInFragment : Fragment() {
 
     private fun initViews() {
         binding.continueButton.setOnClickListener {
-            val identifier = binding.editTextIdentifier.text.toString().trim()
-            val password = binding.editTextPassword.text.toString().trim()
-            viewModel.startLogin(identifier, password)
+            handleLogin()
         }
     }
 
-    companion object {
+    private fun handleLogin() {
+        val identifier = binding.editTextIdentifier.text.toString().trim()
+        val password = binding.editTextPassword.text.toString().trim()
+        viewModel.startLogin(identifier, password)
     }
 }

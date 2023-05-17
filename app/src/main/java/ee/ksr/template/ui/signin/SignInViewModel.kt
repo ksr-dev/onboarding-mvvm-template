@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -25,16 +26,16 @@ import javax.inject.Inject
 class SignInViewModel @Inject constructor(
     private val googleLoginUseCase: GoogleLoginUseCase,
     private val loginUseCase: LoginUseCase
-) :
-    ViewModel() {
+) : ViewModel() {
+    companion object {
+        private const val GOOGLE_ACTIVITY_TAG = "GoogleActivityResultCode"
+    }
 
-    private val _uiState = MutableStateFlow(UiState())
-    val uiState: StateFlow<UiState> = _uiState.asStateFlow()
+    private val _uiState = MutableStateFlow(SignInUiState())
+    val uiState: StateFlow<SignInUiState> = _uiState.asStateFlow()
 
     private fun loginWithGoogleAccount(userName: String) {
-        _uiState.update {
-            it.copy(isLoading = true)
-        }
+        _uiState.update { it.copy(isLoading = true) }
         viewModelScope.launch {
             googleLoginUseCase.login(userName).let { loginData ->
                 if (loginData == null) {
@@ -49,9 +50,7 @@ class SignInViewModel @Inject constructor(
     }
 
     private fun login(userName: String, password: String) {
-        _uiState.update {
-            it.copy(isLoading = true)
-        }
+        _uiState.update { it.copy(isLoading = true) }
         viewModelScope.launch {
             loginUseCase.login(userName, password).let { loginData ->
                 if (loginData == null) {
@@ -71,19 +70,17 @@ class SignInViewModel @Inject constructor(
         }
     }
 
-    fun handleGoogleSignInResult(it: ActivityResult?) {
-        if (it == null) {
-            _uiState.update {
-                it.copy(toastMessageResId = R.string.sign_in_google_null)
-            }
+    fun handleGoogleSignInResult(result: ActivityResult?) {
+        if (result == null) {
+            _uiState.update { it.copy(toastMessageResId = R.string.sign_in_google_null) }
             return
         }
-        when (it.resultCode) {
+        when (result.resultCode) {
             Activity.RESULT_OK -> {
                 // The Task returned from this call is always completed, no need to attach
                 // a listener.
                 val task: Task<GoogleSignInAccount> =
-                    GoogleSignIn.getSignedInAccountFromIntent(it.data)
+                    GoogleSignIn.getSignedInAccountFromIntent(result.data)
                 handleSignInResult(task)
             }
 
@@ -94,7 +91,7 @@ class SignInViewModel @Inject constructor(
             }
 
             else -> {
-                Log.e(GOOGLE_ACTIVITY_TAG, "resultData: $it")
+                Log.e(GOOGLE_ACTIVITY_TAG, "resultData: $result")
             }
         }
     }
@@ -120,12 +117,14 @@ class SignInViewModel @Inject constructor(
         }
     }
 
-    companion object {
-        private const val GOOGLE_ACTIVITY_TAG = "GoogleActivityResultCode"
+    fun buildGoogleSignInClient(): GoogleSignInOptions {
+        return GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestEmail()
+            .build()
     }
 }
 
-data class UiState(
+data class SignInUiState(
     val isLoading: Boolean = false,
     val toastMessageResId: Int? = null,
     val loginData: LoginData? = null

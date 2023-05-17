@@ -26,7 +26,6 @@ class OnboardingContainerFragment : Fragment() {
     private lateinit var pagerAdapter: SlidePagerAdapter
 
     private val args: OnboardingContainerFragmentArgs by navArgs()
-    private val viewModel: OnboardingViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -124,8 +123,6 @@ class OnboardingContainerFragment : Fragment() {
     private fun showPreviousPage() {
         if (viewPager.currentItem != 0) { // has not reached end
             viewPager.setCurrentItem(viewPager.currentItem - 1, true)
-        } else { // has reached end
-            //viewModel.onOpenEnterAppPage()
         }
     }
     private inner class SlidePagerAdapter(fragment: OnboardingContainerFragment) :
@@ -148,8 +145,6 @@ class OnboardingContainerFragment : Fragment() {
     private fun showNextPage() {
         if (viewPager.currentItem != NUM_PAGES - 1) { // has not reached end
             viewPager.setCurrentItem(viewPager.currentItem + 1, true)
-        } else { // has reached end
-            //viewModel.onOpenEnterAppPage()
         }
     }
 
