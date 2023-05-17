@@ -27,6 +27,7 @@ class SignInViewModel @Inject constructor(
     private val googleLoginUseCase: GoogleLoginUseCase,
     private val loginUseCase: LoginUseCase
 ) : ViewModel() {
+
     companion object {
         private const val GOOGLE_ACTIVITY_TAG = "GoogleActivityResultCode"
     }

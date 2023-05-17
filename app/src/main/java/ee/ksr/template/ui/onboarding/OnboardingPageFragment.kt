@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import ee.ksr.template.databinding.FragmentOnboardingPageBinding
 
@@ -13,8 +12,6 @@ import ee.ksr.template.databinding.FragmentOnboardingPageBinding
 class OnboardingPageFragment : Fragment() {
 
     private var _binding: FragmentOnboardingPageBinding? = null
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -44,6 +41,7 @@ class OnboardingPageFragment : Fragment() {
         private const val ARG_TITLE = "ARG_TITLE"
         private const val ARG_BODY = "ARG_BODY"
         private const val ARG_IMAGE = "ARG_IMG"
+
         fun newInstance(title: String, body: String, imageResource: Int): OnboardingPageFragment {
             val args = Bundle()
             args.putString(ARG_TITLE, title)

@@ -18,8 +18,6 @@ import ee.ksr.template.databinding.FragmentOnboardingContainerBinding
 class OnboardingContainerFragment : Fragment() {
 
     private var _binding: FragmentOnboardingContainerBinding? = null
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     private lateinit var viewPager: ViewPager2
@@ -45,6 +43,7 @@ class OnboardingContainerFragment : Fragment() {
         val hasBackButton = args.hasBackButton
         val hasContinueButton = args.hasContinueButton
         binding.viewpager.isUserInputEnabled = args.isSwipable
+
         if (!hasContinueButton) {
             binding.continueButton.visibility = View.GONE
         }
@@ -54,6 +53,7 @@ class OnboardingContainerFragment : Fragment() {
                 navigateToHomeFragment()
             }
         }
+
         createViewPager(hasSkipButton, hasBackButton, hasContinueButton)
     }
 
@@ -66,7 +66,7 @@ class OnboardingContainerFragment : Fragment() {
         viewPager = binding.viewpager
         viewPager.adapter = pagerAdapter
 
-        viewPager.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
+        viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 if (hasSkipButton) {
@@ -116,7 +116,8 @@ class OnboardingContainerFragment : Fragment() {
     }
 
     private fun navigateToHomeFragment() {
-        val action = OnboardingContainerFragmentDirections.actionOnboardingContainerFragmentToPreSignInFragment()
+        val action =
+            OnboardingContainerFragmentDirections.actionOnboardingContainerFragmentToPreSignInFragment()
         findNavController().navigate(action)
     }
 
@@ -125,6 +126,7 @@ class OnboardingContainerFragment : Fragment() {
             viewPager.setCurrentItem(viewPager.currentItem - 1, true)
         }
     }
+
     private inner class SlidePagerAdapter(fragment: OnboardingContainerFragment) :
         FragmentStateAdapter(fragment) {
         override fun getItemCount(): Int = NUM_PAGES
