@@ -26,7 +26,7 @@ class SignUpViewModel @Inject constructor(private val signUpUseCase: SignUpUseCa
             it.copy(isLoading = true)
         }
         viewModelScope.launch {
-            signUpUseCase.createUser(userName, password).let { loginData ->
+            signUpUseCase.createUser(userName = userName, password = password).let { loginData ->
                 if (loginData == null) {
                     showToast(R.string.user_not_found)
                 } else {
@@ -50,9 +50,22 @@ class SignUpViewModel @Inject constructor(private val signUpUseCase: SignUpUseCa
 
     fun startCreateUser(firstPassword: String, secondPassword: String) {
         val userName = _userIdentifier.value
-        if (firstPassword.isNotBlank() && secondPassword.isNotBlank() && firstPassword == secondPassword && userName != null) {
-            createUser(userName, secondPassword)
+        val isInputValid = checkIsInputValid(
+            userName = userName,
+            firstPassword = firstPassword,
+            secondPassword = secondPassword
+        )
+        if (isInputValid) {
+            createUser(userName = userName!!, password = secondPassword)
         }
+    }
+
+    private fun checkIsInputValid(
+        userName: String?,
+        firstPassword: String,
+        secondPassword: String
+    ): Boolean {
+        return firstPassword.isNotBlank() && secondPassword.isNotBlank() && firstPassword == secondPassword && userName != null
     }
 }
 

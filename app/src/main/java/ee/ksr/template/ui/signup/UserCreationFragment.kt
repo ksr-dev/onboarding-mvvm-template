@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import dagger.hilt.android.AndroidEntryPoint
@@ -25,7 +24,6 @@ class UserCreationFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
         _binding = FragmentUserCreationBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -48,9 +46,5 @@ class UserCreationFragment : Fragment() {
             val action = UserCreationFragmentDirections.actionUserCreationFragmentToPasswordFragment()
             findNavController().navigate(action)
         }
-    }
-
-    companion object {
-
     }
 }

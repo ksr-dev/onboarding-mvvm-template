@@ -41,11 +41,11 @@ class PreSignInFragment : Fragment() {
         lifecycleScope.launch {
             lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.uiState.collect {
-                    if (it.isLoading) {
-                        binding.progressIndicator.visibility = View.VISIBLE
-                    } else {
-                        binding.progressIndicator.visibility = View.GONE
+                    when {
+                        it.isLoading -> binding.progressIndicator.visibility = View.VISIBLE
+                        else -> binding.progressIndicator.visibility = View.GONE
                     }
+
                     if (it.toastMessageResId != null) {
                         Toast.makeText(requireContext(), it.toastMessageResId, Toast.LENGTH_SHORT)
                             .show()

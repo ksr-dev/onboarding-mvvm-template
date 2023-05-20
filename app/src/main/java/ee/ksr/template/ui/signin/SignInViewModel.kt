@@ -35,10 +35,10 @@ class SignInViewModel @Inject constructor(
     private val _uiState = MutableStateFlow(SignInUiState())
     val uiState: StateFlow<SignInUiState> = _uiState.asStateFlow()
 
-    private fun loginWithGoogleAccount(userName: String) {
+    private fun loginWithGoogleAccount(userIdentifier: String) {
         _uiState.update { it.copy(isLoading = true) }
         viewModelScope.launch {
-            googleLoginUseCase.login(userName).let { loginData ->
+            googleLoginUseCase.login(userIdentifier).let { loginData ->
                 if (loginData == null) {
                     showToast(R.string.user_not_found)
                 } else {
@@ -50,10 +50,10 @@ class SignInViewModel @Inject constructor(
         }
     }
 
-    private fun login(userName: String, password: String) {
+    private fun loginWithUserIdentifier(userIdentifier: String, password: String) {
         _uiState.update { it.copy(isLoading = true) }
         viewModelScope.launch {
-            loginUseCase.login(userName, password).let { loginData ->
+            loginUseCase.login(userIdentifier, password).let { loginData ->
                 if (loginData == null) {
                     showToast(R.string.user_not_found)
                 } else {
@@ -101,7 +101,7 @@ class SignInViewModel @Inject constructor(
     private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
         try {
             val account: GoogleSignInAccount = completedTask.getResult(ApiException::class.java)
-            loginWithGoogleAccount(account.email.toString())
+            loginWithGoogleAccount(userIdentifier = account.email.toString())
         } catch (e: ApiException) {
             // The ApiException status code indicates the detailed failure reason.
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
@@ -114,7 +114,7 @@ class SignInViewModel @Inject constructor(
 
     fun startLogin(identifier: String, password: String) {
         if (identifier.isNotBlank() && password.isNotBlank()) {
-            login(identifier, password)
+            loginWithUserIdentifier(userIdentifier = identifier, password = password)
         }
     }
 

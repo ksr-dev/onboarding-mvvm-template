@@ -11,10 +11,8 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import dagger.hilt.android.AndroidEntryPoint
 import ee.ksr.template.databinding.FragmentPasswordBinding
-import ee.ksr.template.ui.signin.SignInFragmentDirections
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -28,7 +26,6 @@ class PasswordFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
         _binding = FragmentPasswordBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -43,11 +40,11 @@ class PasswordFragment : Fragment() {
         lifecycleScope.launch {
             lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.uiState.collect {
-                    if (it.isLoading) {
-                        binding.progressIndicator.visibility = View.VISIBLE
-                    } else {
-                        binding.progressIndicator.visibility = View.GONE
+                    when {
+                        it.isLoading -> binding.progressIndicator.visibility = View.VISIBLE
+                        else -> binding.progressIndicator.visibility = View.GONE
                     }
+
                     if (it.toastMessageResId != null) {
                         Toast.makeText(requireContext(), it.toastMessageResId, Toast.LENGTH_SHORT).show()
                     }
@@ -71,9 +68,5 @@ class PasswordFragment : Fragment() {
             val secondPassword = binding.editTextPasswordConfirm.text.toString().trim()
             viewModel.startCreateUser(firstPassword, secondPassword)
         }
-    }
-
-    companion object {
-
     }
 }

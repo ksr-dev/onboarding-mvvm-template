@@ -54,7 +54,11 @@ class OnboardingContainerFragment : Fragment() {
             }
         }
 
-        createViewPager(hasSkipButton, hasBackButton, hasContinueButton)
+        createViewPager(
+            hasSkipButton = hasSkipButton,
+            hasBackButton = hasBackButton,
+            hasContinueButton = hasContinueButton
+        )
     }
 
     private fun createViewPager(
